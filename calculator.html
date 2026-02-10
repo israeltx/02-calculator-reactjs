@@ -38,7 +38,9 @@
 
     <title>Rocketseat - React.js - Fundamentos</title>
   </head>
-  <body class="text-(--text) font-(--font-sans)">
+  <body
+    class="text-(--text) font-(--font-sans) bg-linear-[180deg,_#807ECE_0%,_#807ECE_100%] min-h-screen"
+  >
     <div id="root"></div>
 
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -99,7 +101,7 @@
       function Card({ children, className, ...props }) {
         return (
           <div
-            className={`bg-(--background) shadow(--shadow) rounded-2xl
+            className={`bg-(--background) shadow-(--shadow) rounded-2xl
             ${className ? className : ""}`}
           >
             {children}
@@ -182,7 +184,7 @@
       // Operations History Component
       function OperationHistory() {
         return (
-          <Card className="py-10 px-8">
+          <Card className="py-10 px-8 w-full">
             <Text as="h1" variant="heading" className="mb-4">
               Histórico de Operações
             </Text>
@@ -198,7 +200,9 @@
 
       function App() {
         return (
-          <main className="py-[100px] px-[16px]">
+          <main
+            className={`py-[100px] px-[16px] sm:px-10 flex flex-col sm:flex-row items-center sm:items-stretch gap-2`}
+          >
             <Calculator />
             <OperationHistory />
           </main>
