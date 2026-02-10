@@ -47,6 +47,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
+      // Text Component Variants
       const textVariants = {
         default: "text-xl",
         muted: "text-xl text-(--text-secondary)",
@@ -54,6 +55,7 @@
         blast: "text-3xl",
       };
 
+      // Text Component
       function Text({
         as = "span",
         children,
@@ -63,15 +65,40 @@
       }) {
         return React.createElement(
           as,
-          { className: `${textVariants[variant]} ${className}`, ...props },
+          {
+            className: `${textVariants[variant]} ${className ? className : ""}`,
+            ...props,
+          },
           children,
         );
       }
 
+      // Button Component Variants
+      const buttonVariantes = {
+        default: "bg-(--background)",
+        primary: "bg-(--primary)",
+      };
+
+      // Button Component
+      function Button({ children, className, variant = "default", ...props }) {
+        return (
+          <Text
+            as="button"
+            variant="heading"
+            className={`flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)
+            ${buttonVariantes[variant]}
+            ${className ? className : ""}`}
+            {...props}
+          >
+            {children}
+          </Text>
+        );
+      }
       function App() {
         return (
           <main className="py-[100px] px-[16px]">
-            <Text variant="blast">Hello World</Text>
+            <Button>CE</Button>
+            <Button variant="primary">CE</Button>
           </main>
         );
       }
